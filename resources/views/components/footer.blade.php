@@ -53,7 +53,7 @@
         <hr class="border-border">
 
         {{-- Copyright --}}
-        <p class="text-muted text-sm md:text-base leading-normal text-left">
+        <p class="text-muted text-sm md:text-base leading-normal text-center">
             Copyright &copy; PT Micro Fibertech Indonesia. All rights reserved.
         </p>
 
