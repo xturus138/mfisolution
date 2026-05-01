@@ -1,26 +1,16 @@
-name: Deploy to Hostinger
+name: Build & Deploy
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.3'
-          extensions: mbstring, xml, bcmath, curl, zip
-
-      - name: Install Composer Dependencies
-        run: composer install --no-dev --optimize-autoloader --no-interaction
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -28,39 +18,32 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - name: Build frontend assets
-        run: npm ci && npm run build
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Build Vite assets
+        run: npm run build
 
       - name: Verify build output
-        run: test -f public/build/manifest.json && echo "Manifest OK" || (echo "Build failed — manifest missing" && exit 1)
-
-      - name: Setup SSH agent
         run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -H "${{ secrets.REMOTE_HOST }}" >> ~/.ssh/known_hosts
+          test -f public/build/manifest.json || (echo "❌ manifest.json missing!" && exit 1)
+          echo "✅ Build successful:"
+          ls -lh public/build/assets/
 
-      - name: Deploy to Hostinger via rsync
-        run: |
-          rsync -rlptzvc --delete \
-            --exclude='node_modules/' \
-            --exclude='vendor/' \
-            --exclude='.git/' \
-            --exclude='.github/' \
-            --exclude='.env' \
-            --exclude='.env.*' \
-            -e "ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
-            ./ "${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_PATH }}/"
-
-      - name: Post-Deployment Commands
-        uses: appleboy/ssh-action@v1.0.3
+      - name: Deploy to Hostinger via SSH
+        uses: easingthemes/ssh-deploy@main
         with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd ${{ secrets.REMOTE_PATH }}
-            php artisan optimize:clear
-            php artisan optimize
-            php artisan migrate --force
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          ARGS: "-rlptzvc --delete"
+          SOURCE: "./"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: ${{ secrets.REMOTE_TARGET }}
+          EXCLUDE: |
+            .git/
+            .github/
+            node_modules/
+            .env
+            .env.*
+            storage/logs/
+            .claude/
