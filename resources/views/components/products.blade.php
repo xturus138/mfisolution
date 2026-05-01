@@ -36,7 +36,7 @@ $products = [
 @endphp
 
 <section id="product"
-         class="relative px-6 lg:px-[100px] py-12 lg:py-[48px] overflow-hidden">
+         class="relative px-4 py-6 md:px-6 md:py-12 lg:px-[100px] lg:py-[48px] overflow-hidden">
 
     {{-- Subtle background texture --}}
     <img src="{{ asset('images/products-bg.jpg') }}"
@@ -48,10 +48,10 @@ $products = [
 
         {{-- Section header --}}
         <div class="flex flex-col gap-1">
-            <p class="text-brand font-semibold text-base leading-normal uppercase tracking-wide">
+            <p class="text-brand font-semibold text-sm md:text-base leading-normal uppercase tracking-wide">
                 Product Section
             </p>
-            <h2 class="text-ink font-medium text-3xl lg:text-[32px] leading-[1.2]">
+            <h2 class="text-ink font-medium text-2xl md:text-3xl lg:text-[32px] leading-[1.2]">
                 Seri Barchip
             </h2>
         </div>

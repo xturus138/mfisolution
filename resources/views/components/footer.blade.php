@@ -1,4 +1,4 @@
-<footer id="contact" class="relative shadow-[0_2px_7.5px_rgba(0,0,0,0.15)] px-6 lg:px-[100px] py-8 overflow-hidden">
+<footer id="contact" class="relative shadow-[0_2px_7.5px_rgba(0,0,0,0.15)] px-4 py-6 md:px-6 md:py-8 lg:px-[100px] overflow-hidden">
 
     {{-- Subtle background texture --}}
     <img src="{{ asset('images/footer-bg.jpg') }}"
@@ -13,7 +13,7 @@
 
             {{-- Brand block --}}
             <div class="flex flex-col gap-3 max-w-sm">
-                <p class="text-brand font-medium text-2xl lg:text-[26px] leading-[1.2]">
+                <p class="text-brand font-medium text-xl md:text-2xl lg:text-[26px] leading-[1.2]">
                     PT Micro Fibertech Indonesia
                 </p>
                 <p class="text-muted text-sm leading-relaxed">
@@ -23,7 +23,7 @@
             </div>
 
             {{-- Link columns --}}
-            <div class="flex gap-12 text-sm">
+            <div class="flex flex-col md:flex-row gap-6 md:gap-12 text-sm">
 
                 {{-- Contact --}}
                 <div class="flex flex-col gap-4">
@@ -53,7 +53,7 @@
         <hr class="border-border">
 
         {{-- Copyright --}}
-        <p class="text-muted text-base leading-normal">
+        <p class="text-muted text-sm md:text-base leading-normal text-left">
             Copyright &copy; PT Micro Fibertech Indonesia. All rights reserved.
         </p>
 
