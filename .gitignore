@@ -21,3 +21,28 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+
+# OS Specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Databases
+/database/*.sqlite
+/database/*.sqlite-journal
+
+# Junk and Temp
+*.tmp
+*.temp
+*.cache
+*.swp
+*.bak
+*_old.*
+*_backup.*
+*_copy.*
+TODO.txt
+NOTES.txt
+scratch.*
