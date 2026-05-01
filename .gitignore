@@ -1,6 +1,6 @@
 /.phpunit.cache
 /node_modules
-/public/build
+# /public/build — committed so Hostinger git-deploy picks up Vite assets
 /public/hot
 /public/storage
 /storage/*.key
