@@ -5,4 +5,10 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} deleteme\.\w+\.php
 RewriteRule (.*) - [L] 
 
+# Block access to .env files
+<Files .env*>
+    Order allow,deny
+    Deny from all
+</Files>
+
 RewriteRule ^ index.php [L]
