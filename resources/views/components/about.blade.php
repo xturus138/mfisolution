@@ -1,5 +1,8 @@
-<section class="bg-surface px-4 py-6 md:px-6 md:py-12 lg:px-[100px] lg:py-[48px]">
-    <div class="max-w-[1366px] mx-auto flex flex-col gap-2">
+<section class="bg-surface relative px-4 py-6 md:px-6 md:py-12 lg:px-[100px] lg:py-[48px] overflow-hidden">
+    <!-- Background Triangle Pattern -->
+    <div class="absolute inset-0 pointer-events-none" style="background-image: url('{{ asset('images/pattern-triangle.png') }}'); background-repeat: repeat; background-size: auto;"></div>
+
+    <div class="max-w-[1366px] mx-auto flex flex-col gap-2 relative z-10">
 
         <p class="text-brand font-semibold text-sm md:text-base leading-normal uppercase tracking-wide">
             About Us
@@ -13,4 +16,3 @@
 
     </div>
 </section>
-

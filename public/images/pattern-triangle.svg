@@ -1,0 +1,10 @@
+<svg width="60" height="103.923" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="triangles" width="60" height="103.923" patternUnits="userSpaceOnUse">
+      <path d="M30 0 L60 51.9615 L0 51.9615 Z" fill="none" stroke="#cbd5e1" stroke-width="1.5"/>
+      <path d="M0 51.9615 L30 103.923 L-30 103.923 Z" fill="none" stroke="#cbd5e1" stroke-width="1.5"/>
+      <path d="M60 51.9615 L90 103.923 L30 103.923 Z" fill="none" stroke="#cbd5e1" stroke-width="1.5"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#triangles)" />
+</svg>
