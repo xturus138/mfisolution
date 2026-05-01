@@ -11,4 +11,15 @@ RewriteRule (.*) - [L]
     Deny from all
 </Files>
 
+# Serve files that exist at the document root directly (e.g. favicon.ico)
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Hostinger serves from public_html/ but Laravel's public/ is a subdirectory.
+# Transparently proxy static assets (CSS, JS, images, fonts) to public/ when
+# the file exists there, so Vite asset URLs and asset() helpers work correctly.
+RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -f
+RewriteRule ^(.+)$ public/$1 [L]
+
+# All other requests go through Laravel's front controller
 RewriteRule ^ index.php [L]
