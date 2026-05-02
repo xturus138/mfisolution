@@ -151,109 +151,292 @@ $products = [
 ];
 @endphp
 
-{{-- Overlay: black at 30% opacity, no blur --}}
+<style>
+/* ── Backdrop ─────────────────────────────────────────── */
+#productModalBackdrop {
+    background: rgba(0,0,0,0.30);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+#productModalBackdrop.pm-open { opacity: 1; }
+
+/* ── Panel base ───────────────────────────────────────── */
+#pm-panel {
+    will-change: transform, opacity;
+}
+
+/* ── Mobile: bottom sheet ─────────────────────────────── */
+@media (max-width: 767px) {
+    #productModal { align-items: flex-end; }
+
+    #pm-panel {
+        width: 100%;
+        max-height: 90svh;
+        border-radius: 20px 20px 0 0;
+        transform: translateY(100%);
+        transition: transform 0.42s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+    #pm-panel.pm-open { transform: translateY(0); }
+
+    /* Dragging — disable transition so it follows finger */
+    #pm-panel.pm-dragging { transition: none; }
+}
+
+/* ── Desktop: centred panel (Figma 800×484) ───────────── */
+@media (min-width: 768px) {
+    #productModal { align-items: center; justify-content: center; }
+
+    #pm-panel {
+        width: 800px;
+        height: 484px;
+        border-radius: 8px;
+        opacity: 0;
+        transform: scale(0.97) translateY(8px);
+        transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+    #pm-panel.pm-open {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+    #pm-scroll { height: 376px; }
+}
+
+/* ── Section rows (responsive layout) ────────────────── */
+.pm-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #ededed;
+}
+@media (min-width: 640px) {
+    .pm-row {
+        flex-direction: row;
+        gap: 16px;
+        padding: 12px;
+    }
+}
+
+.pm-row-title {
+    color: #ff6a00;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+@media (min-width: 640px) {
+    .pm-row-title {
+        font-size: 16px;
+        text-transform: none;
+        letter-spacing: 0;
+        width: 200px;
+    }
+}
+
+.pm-row-content {
+    color: #616161;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    flex: 1;
+    min-width: 0;
+}
+
+/* ── Staggered row fade-in ────────────────────────────── */
+@keyframes pm-row-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.pm-row { animation: pm-row-in 0.28s ease both; }
+</style>
+
+{{-- Overlay --}}
 <div id="productModalBackdrop"
      class="fixed inset-0 hidden z-40"
-     style="background:rgba(0,0,0,0.30)"
      onclick="closeProductModal()">
 </div>
 
-{{-- Modal panel: 800×484px per Figma node 47:242 --}}
+{{-- Modal --}}
 <div id="productModal"
-     class="fixed inset-0 hidden z-50 flex items-center justify-center">
-    <div class="bg-surface rounded-lg shadow-xl flex flex-col overflow-hidden w-[800px] h-[484px]"
+     class="fixed inset-0 hidden z-50 flex">
+
+    <div id="pm-panel"
+         class="bg-surface shadow-2xl flex flex-col overflow-hidden"
          onclick="event.stopPropagation()">
 
-        {{-- Sticky header: h-108px, gap-24px, pt-16px pb-12px --}}
-        <div class="bg-surface border-b border-border flex gap-6 items-start shrink-0 h-[108px] px-4 pt-[16px] pb-[12px]">
+        {{-- Drag handle (mobile only) --}}
+        <div class="flex justify-center pt-3 pb-1 shrink-0 md:hidden" id="pm-handle">
+            <div style="width:36px;height:4px;border-radius:9999px;background:#d1d5db"></div>
+        </div>
 
-            {{-- Product image: 80×80px --}}
-            <div class="shrink-0 size-[80px] overflow-hidden rounded bg-[#d9d9d9]">
-                <img id="modalProductImage"
-                     src=""
-                     alt=""
-                     class="size-full object-cover">
+        {{-- Header: 108px on desktop, auto on mobile --}}
+        <div class="bg-surface border-b border-border flex items-start shrink-0 gap-4 px-4 py-4 md:gap-6 md:h-[108px] md:pt-[16px] md:pb-[12px]">
+
+            {{-- Product image --}}
+            <div class="shrink-0 rounded overflow-hidden bg-[#d9d9d9]"
+                 style="width:56px;height:56px">
+                <img id="modalProductImage" src="" alt=""
+                     style="width:100%;height:100%;object-fit:cover">
             </div>
 
-            {{-- Product info --}}
-            <div class="flex-1 min-w-0 flex flex-col gap-2 justify-center h-full">
-                {{-- Logo: 80×24px --}}
-                <img id="modalProductLogo"
-                     src=""
-                     alt=""
-                     class="h-[24px] w-[80px] object-contain object-left">
+            {{-- Info --}}
+            <div class="flex-1 min-w-0 flex flex-col justify-center gap-1 md:gap-2 md:h-full">
+                <img id="modalProductLogo" src="" alt=""
+                     class="object-contain object-left"
+                     style="height:22px;max-width:88px">
                 <p id="modalProductDescription"
-                   class="text-[#616161] text-[16px] leading-[1.5]">
+                   class="leading-snug"
+                   style="color:#616161;font-size:13px;line-height:1.5">
                 </p>
             </div>
 
-            {{-- Close button --}}
+            {{-- Close --}}
             <button onclick="closeProductModal()"
-                    class="shrink-0 text-ink hover:text-brand transition-colors"
-                    aria-label="Close modal">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    class="shrink-0 hover:text-brand transition-colors"
+                    style="color:#0a0a0a;padding:2px"
+                    aria-label="Close">
+                <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M6 18L18 6M6 6l12 12"/>
                 </svg>
             </button>
         </div>
 
-        {{-- Scrollable section list: remaining 376px (484-108) --}}
-        <div class="overflow-y-auto" style="height:376px">
-            <div id="modalSections" class="flex flex-col">
-                {{-- Two-column rows (title | content) populated by JavaScript --}}
-            </div>
+        {{-- Scrollable section list --}}
+        <div id="pm-scroll" class="overflow-y-auto flex-1">
+            <div id="modalSections" class="flex flex-col"></div>
         </div>
+
     </div>
 </div>
 
 <script>
 const productData = @json($products);
 
+/* ── Helpers ─────────────────────────────────────── */
+const $ = id => document.getElementById(id);
+const isMobile = () => window.innerWidth < 768;
+
+let _closing = false;
+
+/* ── Open ────────────────────────────────────────── */
 function openProductModal(productKey) {
     const product = productData[productKey];
     if (!product) return;
+    _closing = false;
 
-    document.getElementById('modalProductImage').src = product.image;
-    document.getElementById('modalProductImage').alt = product.imageAlt;
-    document.getElementById('modalProductLogo').src = product.logo;
-    document.getElementById('modalProductLogo').alt = product.logoAlt;
-    document.getElementById('modalProductDescription').textContent = product.description;
+    // Populate header
+    $('modalProductImage').src = product.image;
+    $('modalProductImage').alt = product.imageAlt;
+    $('modalProductLogo').src  = product.logo;
+    $('modalProductLogo').alt  = product.logoAlt;
+    $('modalProductDescription').textContent = product.description;
 
-    const container = document.getElementById('modalSections');
+    // Populate section rows with staggered animation delay
+    const container = $('modalSections');
     container.innerHTML = '';
-
-    product.sections.forEach(section => {
+    product.sections.forEach((section, i) => {
         const row = document.createElement('div');
-        row.className = 'flex gap-[16px] items-start border-b border-[#ededed] p-[12px]';
+        row.className = 'pm-row';
+        row.style.animationDelay = `${i * 40}ms`;
 
-        const titleEl = document.createElement('p');
-        titleEl.className = 'shrink-0 w-[200px] text-[#ff6a00] font-semibold text-[16px] leading-[1.5]';
-        titleEl.textContent = section.title;
+        const title = document.createElement('p');
+        title.className = 'pm-row-title';
+        title.textContent = section.title;
 
-        const contentEl = document.createElement('p');
-        contentEl.className = 'flex-1 min-w-0 text-[#616161] text-[14px] leading-[1.5] whitespace-pre-wrap';
-        contentEl.textContent = section.content;
+        const content = document.createElement('p');
+        content.className = 'pm-row-content';
+        content.textContent = section.content;
 
-        row.appendChild(titleEl);
-        row.appendChild(contentEl);
+        row.appendChild(title);
+        row.appendChild(content);
         container.appendChild(row);
     });
 
-    document.getElementById('productModal').classList.remove('hidden');
-    document.getElementById('productModalBackdrop').classList.remove('hidden');
+    // Show hidden elements
+    $('productModal').classList.remove('hidden');
+    $('productModalBackdrop').classList.remove('hidden');
     document.body.style.overflow = 'hidden';
+
+    // Trigger transitions on next paint
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+        $('pm-panel').classList.add('pm-open');
+        $('productModalBackdrop').classList.add('pm-open');
+    }));
 }
 
+/* ── Close ───────────────────────────────────────── */
 function closeProductModal() {
-    document.getElementById('productModal').classList.add('hidden');
-    document.getElementById('productModalBackdrop').classList.add('hidden');
-    document.body.style.overflow = '';
+    if (_closing) return;
+    _closing = true;
+
+    const panel = $('pm-panel');
+    panel.classList.remove('pm-open');
+    $('productModalBackdrop').classList.remove('pm-open');
+
+    // Wait for the longest transition (420ms mobile / 220ms desktop)
+    const delay = isMobile() ? 430 : 240;
+    setTimeout(() => {
+        $('productModal').classList.add('hidden');
+        $('productModalBackdrop').classList.add('hidden');
+        document.body.style.overflow = '';
+        // Reset any inline transform left over from drag
+        panel.style.transform = '';
+        _closing = false;
+    }, delay);
 }
 
-// Close modal on Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        closeProductModal();
-    }
+/* ── Swipe-to-dismiss (mobile) ───────────────────── */
+(function () {
+    const panel = $('pm-panel');
+    let startY = 0, currentY = 0, active = false;
+
+    panel.addEventListener('touchstart', e => {
+        // Only initiate drag from the handle or header
+        const handle = $('pm-handle');
+        if (!handle) return;
+        const scrollEl = $('pm-scroll');
+        if (scrollEl && scrollEl.scrollTop > 0) return; // let scroll run first
+        startY = e.touches[0].clientY;
+        currentY = startY;
+        active = true;
+        panel.classList.add('pm-dragging');
+    }, { passive: true });
+
+    panel.addEventListener('touchmove', e => {
+        if (!active || !isMobile()) return;
+        currentY = e.touches[0].clientY;
+        const delta = Math.max(0, currentY - startY);
+        panel.style.transform = `translateY(${delta}px)`;
+        // Dim backdrop proportionally
+        const progress = Math.min(delta / 200, 1);
+        $('productModalBackdrop').style.opacity = String(0.30 * (1 - progress));
+    }, { passive: true });
+
+    panel.addEventListener('touchend', () => {
+        if (!active) return;
+        active = false;
+        panel.classList.remove('pm-dragging');
+        const delta = currentY - startY;
+
+        if (delta > 90) {
+            // Threshold met — close
+            panel.style.transform = '';
+            $('productModalBackdrop').style.opacity = '';
+            closeProductModal();
+        } else {
+            // Snap back
+            panel.style.transform = '';
+            $('productModalBackdrop').style.opacity = '';
+        }
+    });
+})();
+
+/* ── Keyboard ────────────────────────────────────── */
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeProductModal();
 });
 </script>
