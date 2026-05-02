@@ -7,10 +7,10 @@
     'href' => '#',
 ])
 
-<div class="flex flex-col gap-3 bg-white">
+<div class="flex flex-col gap-3">
 
     {{-- Product photo --}}
-    <div class="h-[200px] overflow-hidden bg-white shrink-0">
+    <div class="h-[200px] overflow-hidden shrink-0">
         <img src="{{ $image }}"
              alt="{{ $imageAlt }}"
              class="w-full h-full object-cover">
