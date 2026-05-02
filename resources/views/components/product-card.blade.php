@@ -5,12 +5,13 @@
     'logoAlt' => '',
     'description',
     'href' => '#',
+    'modalKey' => '',
 ])
 
-<div class="flex flex-col gap-3 bg-white">
+<div class="flex flex-col gap-3">
 
     {{-- Product photo --}}
-    <div class="h-[200px] overflow-hidden bg-white shrink-0">
+    <div class="h-[200px] overflow-hidden shrink-0">
         <img src="{{ $image }}"
              alt="{{ $imageAlt }}"
              class="w-full h-full object-cover">
@@ -27,12 +28,12 @@
         {{-- Description --}}
         <p class="text-muted text-sm md:text-base leading-relaxed">{{ $description }}</p>
 
-        {{-- See More link --}}
-        <a href="{{ $href }}"
-           class="flex items-center gap-2 text-brand text-sm md:text-base leading-normal hover:gap-3 transition-all group">
+        {{-- See More button --}}
+        <button onclick="openProductModal('{{ $modalKey }}')"
+                class="flex items-center gap-2 text-brand text-sm md:text-base leading-normal hover:gap-3 transition-all group">
             See More
             <x-icon.arrow-right class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
-        </a>
+        </button>
     </div>
 
 </div>

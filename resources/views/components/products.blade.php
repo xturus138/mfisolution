@@ -6,7 +6,7 @@ $products = [
         'logo'        => asset('images/products/logo-46.png'),
         'logoAlt'     => 'BarChip 46',
         'description' => 'Light-duty fibre for general concrete applications',
-        'href'        => '#',
+        'modalKey'    => 'barchip-46',
     ],
     [
         'image'       => asset('images/products/barchip-48.jpg'),
@@ -14,7 +14,7 @@ $products = [
         'logo'        => asset('images/products/logo-48.png'),
         'logoAlt'     => 'BarChip 48',
         'description' => 'Ideal for slabs and standard industrial flooring',
-        'href'        => '#',
+        'modalKey'    => 'barchip-48',
     ],
     [
         'image'       => asset('images/products/barchip-macro.jpg'),
@@ -22,7 +22,7 @@ $products = [
         'logo'        => asset('images/products/logo-macro.png'),
         'logoAlt'     => 'BarChip Macro',
         'description' => 'High-performance fibre for heavy load structures',
-        'href'        => '#',
+        'modalKey'    => 'barchip-macro',
     ],
     [
         'image'       => asset('images/products/barchip-65.jpg'),
@@ -30,7 +30,7 @@ $products = [
         'logo'        => asset('images/products/logo-65.png'),
         'logoAlt'     => 'BarChip 65',
         'description' => 'Engineered for demanding structural reinforcement',
-        'href'        => '#',
+        'modalKey'    => 'barchip-65',
     ],
 ];
 @endphp
@@ -65,10 +65,13 @@ $products = [
                     :logo="$product['logo']"
                     :logoAlt="$product['logoAlt']"
                     :description="$product['description']"
-                    :href="$product['href']"
+                    :modalKey="$product['modalKey']"
                 />
             @endforeach
         </div>
 
     </div>
+
+    {{-- Product Modal --}}
+    <x-product-modal />
 </section>
