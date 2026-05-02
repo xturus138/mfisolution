@@ -80,6 +80,26 @@
             </a>
         </div>
     </div>
+
+    {{-- Gmail fallback toast --}}
+    <div id="gmail-toast"
+         style="display:none; position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(16px);
+                background:#1a1a1a; color:#fff; border-radius:8px; padding:12px 16px;
+                font-size:13px; font-family:inherit; box-shadow:0 4px 24px rgba(0,0,0,0.18);
+                display:flex; align-items:center; gap:10px; z-index:9999;
+                opacity:0; transition:opacity 0.2s ease, transform 0.2s ease; pointer-events:none;">
+        <span>Email client not opening?</span>
+        <a id="gmail-toast-link"
+           href="https://mail.google.com/mail/?view=cm&fs=1&to=info@microfibertech.com"
+           target="_blank" rel="noopener noreferrer"
+           style="color:#ff6a00; font-weight:600; text-decoration:none; white-space:nowrap;">
+            Open Gmail →
+        </a>
+        <button id="gmail-toast-close"
+                style="background:none; border:none; color:#888; cursor:pointer; padding:0 0 0 4px; font-size:16px; line-height:1;">
+            ×
+        </button>
+    </div>
 </nav>
 
 <script>
@@ -89,15 +109,15 @@
 
     openBtn.addEventListener('click', () => {
         menu.classList.remove('hidden');
-        document.body.style.overflow = 'hidden'; // Prevent scroll
+        document.body.style.overflow = 'hidden';
     });
 
     closeBtn.addEventListener('click', () => {
         menu.classList.add('hidden');
-        document.body.style.overflow = ''; // Restore scroll
+        document.body.style.overflow = '';
     });
 
-    // Close on link click
+    // Close mobile menu on link click
     menu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             menu.classList.add('hidden');
@@ -105,16 +125,39 @@
         });
     });
 
-    // Contact buttons: try native email client, fall back to Gmail web if nothing opens
-    document.querySelectorAll('[data-contact-link]').forEach(link => {
-        link.addEventListener('click', e => {
-            e.preventDefault();
-            window.location.href = 'mailto:info@microfibertech.com';
-            setTimeout(() => {
-                if (document.hasFocus()) {
-                    window.open('https://mail.google.com/mail/?view=cm&fs=1&to=info@microfibertech.com', '_blank');
-                }
-            }, 500);
+    // Toast helpers
+    const toast = document.getElementById('gmail-toast');
+    let toastTimer = null;
+
+    function showToast() {
+        toast.style.display = 'flex';
+        toast.style.pointerEvents = 'auto';
+        requestAnimationFrame(() => {
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateX(-50%) translateY(0)';
+        });
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(hideToast, 6000);
+    }
+
+    function hideToast() {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(-50%) translateY(16px)';
+        toast.style.pointerEvents = 'none';
+        setTimeout(() => { toast.style.display = 'none'; }, 200);
+    }
+
+    document.getElementById('gmail-toast-close').addEventListener('click', hideToast);
+
+    // Contact link handler — wire up ALL [data-contact-link] elements after full DOM load
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('[data-contact-link]').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                window.location.href = 'mailto:info@microfibertech.com';
+                // Show toast after a short delay so user sees it if nothing opened
+                setTimeout(showToast, 800);
+            });
         });
     });
 </script>
