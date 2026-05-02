@@ -2,34 +2,34 @@
 $products = [
     'barchip-46' => [
         'logo'        => asset('images/products/logo-46.png'),
-        'logoAlt'     => 'BarChip 46',
+        'logoAlt'     => 'BarChip MQ58',
         'image'       => asset('images/products/barchip-46.jpg'),
-        'imageAlt'    => 'BarChip 46 synthetic fibre',
-        'description' => 'Light-duty fibre for general concrete applications',
+        'imageAlt'    => 'BarChip MQ58 synthetic fibre',
+        'description' => 'Triple-threat fibre for pavement and industrial floors: residual strength, crack control, and fibre-free surface finish',
         'sections'    => [
             [
                 'title' => 'Overview',
-                'content' => 'Easy-to-use concrete fibre designed for pumping applications and beam-tested structural performance.',
+                'content' => 'BarChip MQ58 is a high-performance structural synthetic fibre optimised for pavement and industrial floors. Known as the "triple threat" fibre, it delivers residual strength, shrinkage crack control, and a smooth fibre-free surface finish.',
             ],
             [
                 'title' => 'Key Applications',
-                'content' => "• Tunnel segments\n• Precast elements\n• Concrete track slabs",
+                'content' => "• Pavement\n• Industrial floors\n• Concrete roads",
             ],
             [
                 'title' => 'Dosage',
-                'content' => '2.5 – 5 kg / m³, Adjust based on required performance',
+                'content' => '2.5 – 5 kg / m³. Adjust dosage based on required performance. Standard dosage may reduce slump.',
             ],
             [
                 'title' => 'Pumping',
-                'content' => 'Compatible with 50 mm rubber hose, Ensure smooth flow through hopper',
+                'content' => 'Pumpable through a 50 mm rubber hose with no issues. Ensure fibres pass freely through the hopper screen.',
             ],
             [
                 'title' => 'Mixing Method',
-                'content' => "• Add directly with packaging\n• Mix with water first\n• Add dry materials\n• Use high-speed mixing\n• Optimize with specialist",
+                'content' => "• Add to mixer in the bag (no need to open) with initial water\n• Add dry materials\n• Mix at high speed as required\n• Alternative batching methods may also be used\n• Mix design optimisation with a BarChip specialist is recommended",
             ],
             [
                 'title' => 'Handling & Storage',
-                'content' => "• 2.5 kg biodegradable bags\n• 440 kg per pallet\n• Weather-protected packaging\n• Store dry if separated",
+                'content' => "• Supplied as pucks in 5 kg biodegradable paper bags\n• 450 kg per pallet\n• Durable, recyclable plastic pallet with rain cover (outdoor storage suitable)\n• Bags must be protected from water if stored separately",
             ],
             [
                 'title' => 'Standards',
@@ -42,31 +42,31 @@ $products = [
         'logoAlt'     => 'BarChip 48',
         'image'       => asset('images/products/barchip-48.jpg'),
         'imageAlt'    => 'BarChip 48 synthetic fibre',
-        'description' => 'Ideal for slabs and standard industrial flooring',
+        'description' => 'Versatile concrete fibre for tunnel segments, precast elements, and concrete track slabs',
         'sections'    => [
             [
                 'title' => 'Overview',
-                'content' => 'Mid-range fibre providing excellent performance for standard industrial and commercial applications.',
+                'content' => 'BarChip 48 is an easy-to-use concrete fibre — added directly in the bag, pump-compatible, and compliant with international standards. Ideal for beam-test validated designs and trusted for critical infrastructure projects including tunnel segments, precast elements, and concrete track slabs.',
             ],
             [
                 'title' => 'Key Applications',
-                'content' => "• Industrial floors\n• Warehouse slabs\n• Commercial pavements",
+                'content' => "• Tunnel segments\n• Precast elements\n• Concrete track slabs",
             ],
             [
                 'title' => 'Dosage',
-                'content' => '3.5 – 6 kg / m³, Adjust based on required performance',
+                'content' => '2.5 – 5 kg / m³. Adjust dosage based on required performance. Standard dosage may reduce slump.',
             ],
             [
                 'title' => 'Pumping',
-                'content' => 'Compatible with 50 mm rubber hose, Ensure smooth flow through hopper',
+                'content' => 'Pumpable through a 50 mm rubber hose with no issues. Ensure fibres pass freely through the hopper screen.',
             ],
             [
                 'title' => 'Mixing Method',
-                'content' => "• Add directly with packaging\n• Mix with water first\n• Add dry materials\n• Use high-speed mixing\n• Optimize with specialist",
+                'content' => "• Add to mixer in the bag (no need to open) with initial water\n• Add dry materials\n• Mix at high speed for the required number of revolutions\n• Alternative mixing methods may also be used\n• Mix design optimisation with a BarChip specialist is recommended",
             ],
             [
                 'title' => 'Handling & Storage',
-                'content' => "• 2.5 kg biodegradable bags\n• 440 kg per pallet\n• Weather-protected packaging\n• Store dry if separated",
+                'content' => "• Supplied in 2.5 kg biodegradable paper bags\n• 440 kg per pallet\n• Durable, recyclable plastic pallet with rain cover (outdoor storage suitable)\n• Bags must be protected from water if stored separately",
             ],
             [
                 'title' => 'Standards',
@@ -76,34 +76,34 @@ $products = [
     ],
     'barchip-macro' => [
         'logo'        => asset('images/products/logo-macro.png'),
-        'logoAlt'     => 'BarChip Macro',
+        'logoAlt'     => 'BarChip 54',
         'image'       => asset('images/products/barchip-macro.jpg'),
-        'imageAlt'    => 'BarChip Macro synthetic fibre',
-        'description' => 'High-performance fibre for heavy load structures',
+        'imageAlt'    => 'BarChip 54 synthetic fibre',
+        'description' => 'High-performance synthetic shotcrete fibre for tunnels, slope stabilisation, and concrete reinforcement',
         'sections'    => [
             [
                 'title' => 'Overview',
-                'content' => 'Premium long-fibre reinforcement designed for heavy-duty structural applications and load-bearing concrete.',
+                'content' => 'BarChip 54 is a high-performance synthetic fibre engineered specifically for shotcrete. Easy to use — added directly in the bag — pump-compatible, and compliant with international standards. Suited for tunnel lining, slope stabilisation, and structural shotcrete applications.',
             ],
             [
                 'title' => 'Key Applications',
-                'content' => "• Heavy load structures\n• Bridges and viaducts\n• Thick concrete sections",
+                'content' => "• Tunnels\n• Slope stabilisation\n• Shotcrete",
             ],
             [
                 'title' => 'Dosage',
-                'content' => '4.5 – 8 kg / m³, Adjust based on required performance',
+                'content' => '3 – 6 kg / m³. Adjust dosage based on required performance. Standard dosage may reduce slump.',
             ],
             [
                 'title' => 'Pumping',
-                'content' => 'Compatible with 50 mm rubber hose, Ensure smooth flow through hopper',
+                'content' => 'Pumpable through a 50 mm rubber hose with no issues. Ensure fibres pass freely through the hopper screen.',
             ],
             [
                 'title' => 'Mixing Method',
-                'content' => "• Add directly with packaging\n• Mix with water first\n• Add dry materials\n• Use high-speed mixing\n• Optimize with specialist",
+                'content' => "• Add to mixer in the bag (no need to open) with initial water\n• Add dry materials\n• Mix at high speed as required\n• Alternative mixing methods may also be used\n• Mix design optimisation with a BarChip specialist is recommended",
             ],
             [
                 'title' => 'Handling & Storage',
-                'content' => "• 2.5 kg biodegradable bags\n• 440 kg per pallet\n• Weather-protected packaging\n• Store dry if separated",
+                'content' => "• Supplied in 3 kg biodegradable paper bags\n• 432 kg per pallet\n• Durable, recyclable plastic pallet with rain cover (outdoor storage suitable)\n• Separate bags must be protected from water\n• Also available in Puck Packaging for automated dosing",
             ],
             [
                 'title' => 'Standards',
@@ -113,34 +113,34 @@ $products = [
     ],
     'barchip-65' => [
         'logo'        => asset('images/products/logo-65.png'),
-        'logoAlt'     => 'BarChip 65',
+        'logoAlt'     => 'BarChip R65',
         'image'       => asset('images/products/barchip-65.jpg'),
-        'imageAlt'    => 'BarChip 65 synthetic fibre',
-        'description' => 'Engineered for demanding structural reinforcement',
+        'imageAlt'    => 'BarChip R65 synthetic fibre',
+        'description' => 'Eco-friendly shotcrete fibre made from recycled material — high performance with a significantly lower carbon footprint',
         'sections'    => [
             [
                 'title' => 'Overview',
-                'content' => 'Ultra-high-performance fibre for the most demanding structural reinforcement applications.',
+                'content' => 'BarChip R65 is an environmentally responsible shotcrete reinforcement fibre from BarChip Inc. Made from recycled material, it delivers a significant reduction in carbon emissions on concrete works without compromising performance — ideal for sustainable construction projects.',
             ],
             [
                 'title' => 'Key Applications',
-                'content' => "• Structural reinforcement\n• High-stress elements\n• Specialized applications",
+                'content' => "• Shotcrete\n• Sustainable construction projects\n• Green construction applications",
             ],
             [
                 'title' => 'Dosage',
-                'content' => '5.0 – 10 kg / m³, Adjust based on required performance',
+                'content' => '4 – 6 kg / m³. Adjust dosage based on required performance. Standard dosage may reduce slump.',
             ],
             [
                 'title' => 'Pumping',
-                'content' => 'Compatible with 50 mm rubber hose, Ensure smooth flow through hopper',
+                'content' => 'Pumpable through a 50 mm rubber hose with no issues. Ensure fibres pass freely through the hopper screen.',
             ],
             [
                 'title' => 'Mixing Method',
-                'content' => "• Add directly with packaging\n• Mix with water first\n• Add dry materials\n• Use high-speed mixing\n• Optimize with specialist",
+                'content' => "• Add to mixer in the bag (no need to open) with initial water\n• Add dry materials\n• Mix at high speed as required\n• Alternative mixing methods may also be used\n• Mix design optimisation with a BarChip specialist is recommended",
             ],
             [
                 'title' => 'Handling & Storage',
-                'content' => "• 2.5 kg biodegradable bags\n• 440 kg per pallet\n• Weather-protected packaging\n• Store dry if separated",
+                'content' => "• Supplied in 3 kg biodegradable paper bags\n• 432 kg per pallet\n• Durable, recyclable plastic pallet with rain cover (outdoor storage suitable)\n• Bags must be protected from water if stored separately\n• Also available in Puck Packaging for automated dosing",
             ],
             [
                 'title' => 'Standards',
