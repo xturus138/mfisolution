@@ -151,23 +151,24 @@ $products = [
 ];
 @endphp
 
-{{-- Transparent click-trap backdrop (no dark overlay, no blur) --}}
+{{-- Overlay: black at 30% opacity, no blur --}}
 <div id="productModalBackdrop"
      class="fixed inset-0 hidden z-40"
+     style="background:rgba(0,0,0,0.30)"
      onclick="closeProductModal()">
 </div>
 
-{{-- Modal panel --}}
+{{-- Modal panel: 800×484px per Figma node 47:242 --}}
 <div id="productModal"
-     class="fixed inset-0 hidden z-50 overflow-hidden flex items-center justify-center p-4">
-    <div class="bg-surface rounded-lg shadow-xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col"
+     class="fixed inset-0 hidden z-50 flex items-center justify-center">
+    <div class="bg-surface rounded-lg shadow-xl flex flex-col overflow-hidden w-[800px] h-[484px]"
          onclick="event.stopPropagation()">
 
-        {{-- Sticky header --}}
-        <div class="bg-surface border-b border-border px-4 py-4 flex gap-6 items-start shrink-0">
+        {{-- Sticky header: h-108px, gap-24px, pt-16px pb-12px --}}
+        <div class="bg-surface border-b border-border flex gap-6 items-start shrink-0 h-[108px] px-4 pt-[16px] pb-[12px]">
 
-            {{-- Product image --}}
-            <div class="shrink-0 size-20 overflow-hidden rounded">
+            {{-- Product image: 80×80px --}}
+            <div class="shrink-0 size-[80px] overflow-hidden rounded bg-[#d9d9d9]">
                 <img id="modalProductImage"
                      src=""
                      alt=""
@@ -175,19 +176,20 @@ $products = [
             </div>
 
             {{-- Product info --}}
-            <div class="flex-1 min-w-0 flex flex-col gap-2 justify-center">
+            <div class="flex-1 min-w-0 flex flex-col gap-2 justify-center h-full">
+                {{-- Logo: 80×24px --}}
                 <img id="modalProductLogo"
                      src=""
                      alt=""
-                     class="h-6 object-contain object-left">
+                     class="h-[24px] w-[80px] object-contain object-left">
                 <p id="modalProductDescription"
-                   class="text-muted text-base leading-relaxed">
+                   class="text-[#616161] text-[16px] leading-[1.5]">
                 </p>
             </div>
 
             {{-- Close button --}}
             <button onclick="closeProductModal()"
-                    class="shrink-0 text-ink hover:text-brand transition-colors p-1"
+                    class="shrink-0 text-ink hover:text-brand transition-colors"
                     aria-label="Close modal">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -195,8 +197,8 @@ $products = [
             </button>
         </div>
 
-        {{-- Single scrollable section list --}}
-        <div class="flex-1 overflow-y-auto">
+        {{-- Scrollable section list: remaining 376px (484-108) --}}
+        <div class="overflow-y-auto" style="height:376px">
             <div id="modalSections" class="flex flex-col">
                 {{-- Two-column rows (title | content) populated by JavaScript --}}
             </div>
@@ -222,14 +224,14 @@ function openProductModal(productKey) {
 
     product.sections.forEach(section => {
         const row = document.createElement('div');
-        row.className = 'flex gap-4 items-start border-b border-[#ededed] p-3';
+        row.className = 'flex gap-[16px] items-start border-b border-[#ededed] p-[12px]';
 
         const titleEl = document.createElement('p');
-        titleEl.className = 'shrink-0 w-48 text-[#ff6a00] font-semibold text-base leading-relaxed';
+        titleEl.className = 'shrink-0 w-[200px] text-[#ff6a00] font-semibold text-[16px] leading-[1.5]';
         titleEl.textContent = section.title;
 
         const contentEl = document.createElement('p');
-        contentEl.className = 'flex-1 text-[#616161] text-sm leading-relaxed whitespace-pre-wrap';
+        contentEl.className = 'flex-1 min-w-0 text-[#616161] text-[14px] leading-[1.5] whitespace-pre-wrap';
         contentEl.textContent = section.content;
 
         row.appendChild(titleEl);
