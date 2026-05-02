@@ -21,7 +21,7 @@
 
             <div class="w-px h-8 bg-border mx-2"></div>
 
-            <a href="mailto:info@microfibertech.com"
+            <a href="mailto:info@mfisolution.id"
                 data-contact-link
                 class="bg-brand text-white text-sm px-4 py-2 flex items-center gap-1 hover:bg-brand/90 transition-colors">
                 Contact Me
@@ -72,7 +72,7 @@
 
             <div class="w-full h-px bg-white/20"></div>
 
-            <a href="mailto:info@microfibertech.com"
+            <a href="mailto:info@mfisolution.id"
                 data-contact-link
                 class="bg-brand text-white text-sm px-4 py-2.5 flex items-center justify-center gap-1 hover:bg-brand/90 transition-colors w-full">
                 Contact Me
@@ -90,7 +90,7 @@
                 opacity:0; transition:opacity 0.2s ease, transform 0.2s ease; pointer-events:none;">
         <span>Email client not opening?</span>
         <a id="gmail-toast-link"
-           href="https://mail.google.com/mail/?view=cm&fs=1&to=info@microfibertech.com"
+           href="https://mail.google.com/mail/?view=cm&fs=1&to=info@mfisolution.id"
            target="_blank" rel="noopener noreferrer"
            style="color:#ff6a00; font-weight:600; text-decoration:none; white-space:nowrap;">
             Open Gmail
@@ -154,7 +154,7 @@
         document.querySelectorAll('[data-contact-link]').forEach(link => {
             link.addEventListener('click', e => {
                 e.preventDefault();
-                window.location.href = 'mailto:info@microfibertech.com';
+                window.location.href = 'mailto:info@mfisolution.id';
                 // Show toast after a short delay so user sees it if nothing opened
                 setTimeout(showToast, 800);
             });

@@ -28,9 +28,9 @@
                 {{-- Contact --}}
                 <div class="flex flex-col gap-4">
                     <p class="text-brand font-semibold uppercase tracking-wide">Kontak Kami</p>
-                    <a href="mailto:info@microfibertech.com"
+                    <a href="mailto:info@mfisolution.id"
                        class="text-muted hover:text-brand transition-colors">
-                        info@microfibertech.com
+                        info@mfisolution.id
                     </a>
                     <a href="tel:+628118200044"
                        class="text-muted hover:text-brand transition-colors">
