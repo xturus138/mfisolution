@@ -21,7 +21,7 @@
 
             <div class="w-px h-8 bg-border mx-2"></div>
 
-            <a href="#contact"
+            <a href="mailto:info@microfibertech.com"
                 class="bg-brand text-white text-sm px-4 py-2 flex items-center gap-1 hover:bg-brand/90 transition-colors">
                 Contact Me
                 <x-icon.arrow-right class="w-5 h-5" />
@@ -71,7 +71,7 @@
 
             <div class="w-full h-px bg-white/20"></div>
 
-            <a href="#contact"
+            <a href="mailto:info@microfibertech.com"
                 class="bg-brand text-white text-sm px-4 py-2.5 flex items-center justify-center gap-1 hover:bg-brand/90 transition-colors w-full">
                 Contact Me
                 <x-icon.arrow-right class="w-5 h-5" />

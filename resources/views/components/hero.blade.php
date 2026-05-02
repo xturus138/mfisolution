@@ -36,7 +36,7 @@
                    class="bg-brand text-white text-sm px-4 py-2 hover:bg-brand/90 transition-colors">
                     Explore Products
                 </a>
-                <a href="#contact"
+                <a href="mailto:info@microfibertech.com"
                    class="border border-surface text-surface text-sm px-4 py-2 flex items-center gap-1
                           hover:bg-white/10 transition-colors">
                     Talk to Our Team
