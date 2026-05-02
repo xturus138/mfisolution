@@ -93,7 +93,7 @@
            href="https://mail.google.com/mail/?view=cm&fs=1&to=info@microfibertech.com"
            target="_blank" rel="noopener noreferrer"
            style="color:#ff6a00; font-weight:600; text-decoration:none; white-space:nowrap;">
-            Open Gmail →
+            Open Gmail
         </a>
         <button id="gmail-toast-close"
                 style="background:none; border:none; color:#888; cursor:pointer; padding:0 0 0 4px; font-size:16px; line-height:1;">
