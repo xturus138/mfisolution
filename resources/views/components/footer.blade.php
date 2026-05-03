@@ -27,7 +27,7 @@
 
                 {{-- Contact --}}
                 <div class="flex flex-col gap-4">
-                    <p class="text-brand font-semibold uppercase tracking-wide">Kontak Kami</p>
+                    <p class="text-brand font-semibold uppercase tracking-wide">Contact Us</p>
                     <a href="mailto:info@mfisolution.id"
                        class="text-muted hover:text-brand transition-colors">
                         info@mfisolution.id
