@@ -52,7 +52,7 @@ $products = [
                 Product Section
             </p>
             <h2 class="text-ink font-medium text-2xl md:text-3xl lg:text-[32px] leading-[1.2]">
-                Seri Barchip
+                Barchip Series
             </h2>
         </div>
 
