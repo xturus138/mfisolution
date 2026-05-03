@@ -5,11 +5,11 @@ $products = [
         'logoAlt'     => 'BarChip MQ58',
         'image'       => asset('images/products/barchip-46.jpg'),
         'imageAlt'    => 'BarChip MQ58 synthetic fibre',
-        'description' => 'Triple-threat fibre for pavement and industrial floors: residual strength, crack control, and fibre-free surface finish',
+        'description' => 'Triple threat fibre for pavement and industrial floors: residual strength, crack control, and fibre free surface finish',
         'sections'    => [
             [
                 'title' => 'Overview',
-                'content' => 'BarChip MQ58 is a high-performance structural synthetic fibre optimised for pavement and industrial floors. Known as the "triple threat" fibre, it delivers residual strength, shrinkage crack control, and a smooth fibre-free surface finish.',
+                'content' => 'BarChip MQ58 is a high performance structural synthetic fibre optimised for pavement and industrial floors. Known as the "triple threat" fibre, it delivers residual strength, shrinkage crack control, and a smooth fibre free surface finish.',
             ],
             [
                 'title' => 'Key Applications',
@@ -46,7 +46,7 @@ $products = [
         'sections'    => [
             [
                 'title' => 'Overview',
-                'content' => 'BarChip 48 is an easy-to-use concrete fibre — added directly in the bag, pump-compatible, and compliant with international standards. Ideal for beam-test validated designs and trusted for critical infrastructure projects including tunnel segments, precast elements, and concrete track slabs.',
+                'content' => 'BarChip 48 is an easy to use concrete fibre, added directly in the bag, pump compatible, and compliant with international standards. Ideal for beam test validated designs and trusted for critical infrastructure projects including tunnel segments, precast elements, and concrete track slabs.',
             ],
             [
                 'title' => 'Key Applications',
@@ -79,11 +79,11 @@ $products = [
         'logoAlt'     => 'BarChip 54',
         'image'       => asset('images/products/barchip-macro.jpg'),
         'imageAlt'    => 'BarChip 54 synthetic fibre',
-        'description' => 'High-performance synthetic shotcrete fibre for tunnels, slope stabilisation, and concrete reinforcement',
+        'description' => 'High performance synthetic shotcrete fibre for tunnels, slope stabilisation, and concrete reinforcement',
         'sections'    => [
             [
                 'title' => 'Overview',
-                'content' => 'BarChip 54 is a high-performance synthetic fibre engineered specifically for shotcrete. Easy to use — added directly in the bag — pump-compatible, and compliant with international standards. Suited for tunnel lining, slope stabilisation, and structural shotcrete applications.',
+                'content' => 'BarChip 54 is a high performance synthetic fibre engineered specifically for shotcrete. Easy to use, added directly in the bag, pump compatible, and compliant with international standards. Suited for tunnel lining, slope stabilisation, and structural shotcrete applications.',
             ],
             [
                 'title' => 'Key Applications',
@@ -116,11 +116,11 @@ $products = [
         'logoAlt'     => 'BarChip R65',
         'image'       => asset('images/products/barchip-65.jpg'),
         'imageAlt'    => 'BarChip R65 synthetic fibre',
-        'description' => 'Eco-friendly shotcrete fibre made from recycled material — high performance with a significantly lower carbon footprint',
+        'description' => 'Eco friendly shotcrete fibre made from recycled material, high performance with a significantly lower carbon footprint',
         'sections'    => [
             [
                 'title' => 'Overview',
-                'content' => 'BarChip R65 is an environmentally responsible shotcrete reinforcement fibre from BarChip Inc. Made from recycled material, it delivers a significant reduction in carbon emissions on concrete works without compromising performance — ideal for sustainable construction projects.',
+                'content' => 'BarChip R65 is an environmentally responsible shotcrete reinforcement fibre from BarChip Inc. Made from recycled material, it delivers a significant reduction in carbon emissions on concrete works without compromising performance, ideal for sustainable construction projects.',
             ],
             [
                 'title' => 'Key Applications',

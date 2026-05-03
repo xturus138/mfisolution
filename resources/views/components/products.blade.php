@@ -5,7 +5,7 @@ $products = [
         'imageAlt'    => 'BarChip MQ58 synthetic fibre',
         'logo'        => asset('images/products/logo-46.png'),
         'logoAlt'     => 'BarChip MQ58',
-        'description' => 'Triple-threat fibre for pavement and industrial floors: residual strength, crack control, and fibre-free surface finish',
+        'description' => 'Triple threat fibre for pavement and industrial floors: residual strength, crack control, and fibre free surface finish',
         'modalKey'    => 'barchip-46',
     ],
     [
@@ -21,7 +21,7 @@ $products = [
         'imageAlt'    => 'BarChip 54 synthetic fibre',
         'logo'        => asset('images/products/logo-macro.png'),
         'logoAlt'     => 'BarChip 54',
-        'description' => 'High-performance synthetic fibre engineered for shotcrete, tunnels, and slope stabilisation',
+        'description' => 'High performance synthetic fibre engineered for shotcrete, tunnels, and slope stabilisation',
         'modalKey'    => 'barchip-macro',
     ],
     [
@@ -29,7 +29,7 @@ $products = [
         'imageAlt'    => 'BarChip R65 synthetic fibre',
         'logo'        => asset('images/products/logo-65.png'),
         'logoAlt'     => 'BarChip R65',
-        'description' => 'Eco-friendly shotcrete fibre made from recycled material — high performance with a significantly lower carbon footprint',
+        'description' => 'Eco friendly shotcrete fibre made from recycled material, high performance with a significantly lower carbon footprint',
         'modalKey'    => 'barchip-65',
     ],
 ];
