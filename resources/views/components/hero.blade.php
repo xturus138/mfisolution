@@ -15,7 +15,7 @@
             {{-- Badge --}}
             <div class="inline-flex self-center lg:self-start">
                 <span class="bg-brand-light border border-brand text-brand text-[10px] md:text-xs px-4 py-2 rounded-full font-normal leading-normal">
-                    Official Distributor &ndash; Indonesian
+                    Official Distributor &ndash; Indonesia
                 </span>
             </div>
 
@@ -26,7 +26,7 @@
                 </h1>
                 <p class="text-[#ededed] text-lg leading-relaxed">
                     BarChip synthetic fibre improves durability, reduces cost, and simplifies
-                    construction&mdash;without traditional rebar.
+                    construction without traditional rebar.
                 </p>
             </div>
 
